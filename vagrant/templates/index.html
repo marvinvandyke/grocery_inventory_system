@@ -1,7 +1,7 @@
 <html>
     <body>
         <h1>Grocery Inventory System</h1>
-        <form method="POST" action="/index/stockoverview">
+        <form method="POST" action="{{url_for('searchUPC')}}">
             <input type="text" size="30" name="upc" placeholder="Enter UPC or EAN">
             <br>
             <input type="submit" value="Search">
