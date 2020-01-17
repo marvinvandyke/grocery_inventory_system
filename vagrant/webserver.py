@@ -33,9 +33,17 @@ def searchUPC():
         # If found redirect to create new item in local database page
         # If not found redirect to create new item from scratch in local database page
         productInfo = foodAPI.getProductByUPC(upc)
-        return jsonify(productInfo)
+        # return jsonify(productInfo)
+        print(upc)
+        return redirect(url_for('createNewProduct', product_upc=upc))
 
-
+@app.route('/index/<int:product_upc>/createnew/', methods=['GET', 'POST'])
+def createNewProduct(product_upc):
+    if request.method == 'GET':
+        return render_template('createNewProduct.html', product_upc=product_upc)
+    
+    if request.method == 'POST':
+        return redirect(url_for('displayEntryPage'))
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

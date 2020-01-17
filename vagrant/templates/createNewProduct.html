@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>
+      Create new product in inventory
+    </h1>
+    <img id="productimg" src="#">
+    <form method="POST" action="/index">
+      Product UPC:<br>
+      <input type="number" name="upc" placeholder="{{product_upc}}"><br>
+      Product Name:<br>
+      <input type="text" name="productname"><br>
+      Product Manufacturer:<br>
+      <input type="text" name="manufacturer"><br>
+      Product Quantity:<br>
+      <input type="number" name="quantity"><br>
+      Unit:<br>
+      <input type="text" name="unit"><br>
+      Size:<br>
+      <input type="number" name="size"><br>
+      URL:<br>
+      <input type="text" name="url" onchange="resolveURL(this.value)"><br>
+      <input type="submit" name="createproduct" value="Create new product">
+    </form>
+    <script>
+    	var resolveURL = function(val){
+      	var pi = document.getElementById('productimg');
+      	pi.src = val;
+      };
+    </script>
+  </body>
+</html>
