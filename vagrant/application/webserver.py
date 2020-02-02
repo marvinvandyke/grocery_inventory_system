@@ -1,19 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import current_app as app
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
-from database_setup.database_setup import Base, StockItem
-import foodrepowrapper.foodrepo_API as foodAPI
+from vagrant.models.stockitem import StockItem
+from vagrant import db
+# from models.database_setup import Base, StockItem
+from vagrant.services import foodrepo_API as foodAPI
 
 # Create flask application
-app = Flask(__name__)
+# app = Flask(__name__)
 
 # Setup database session
-engine=create_engine('sqlite:///database_setup/stocks.db?check_same_thread=False')
-Base.metadata.bind=engine
-session_factory=sessionmaker(bind=engine)
-DBSession = scoped_session(session_factory)
-session = DBSession()
+# engine=create_engine('sqlite:///file:database_setup/stocks?check_same_thread=False&uri=True')
+#Base.metadata.bind=engine
+#session_factory=sessionmaker(bind=engine)
+#DBSession = scoped_session(session_factory)
+#session = DBSession()
 
 @app.route('/index/')
 def displayEntryPage():
@@ -45,7 +48,7 @@ def createNewProduct(product_upc):
     if request.method == 'POST':
         return redirect(url_for('displayEntryPage'))
 
-if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
-    app.debug=True
-    app.run(host='0.0.0.0', port=5000)
+# if __name__ == '__main__':
+    #app.secret_key = 'super_secret_key'
+    #app.debug=True
+    #app.run(host='0.0.0.0', port=5000)

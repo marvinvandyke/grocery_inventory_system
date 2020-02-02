@@ -2,7 +2,7 @@ import requests as rq
 import json
 
 BASE_URL='https://www.foodrepo.org/api/v3'
-API_KEY='b8e6b727060741a4a0b92fb45e874338'
+API_KEY=''
 
 def getProductByUPC(product_upc):
 

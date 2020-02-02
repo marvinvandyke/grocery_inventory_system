@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, StockItem
+from models import Base, StockItem
 
 engine = create_engine('sqlite:///stocks.db')
 Base.metadata.bind = engine 
